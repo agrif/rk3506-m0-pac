@@ -1,0 +1,28 @@
+# section 4.6.3, page 135
+
+GPIO1:
+  _add:
+    _interrupts:
+      GPIO1_1:
+        description: GPIO1_1 Interrupt
+        value: 3
+      GPIO1_2:
+        description: GPIO1_2 Interrupt
+        value: 4
+      GPIO1_3:
+        description: GPIO1_3 Interrupt
+        value: 5
+
+GPIO2:
+  _add:
+    _interrupts:
+      GPIO2_3:
+        description: GPIO2_3 Interrupt
+        value: 6
+
+GPIO3:
+  _add:
+    _interrupts:
+      GPIO3_3:
+        description: GPIO3_3 Interrupt
+        value: 7
