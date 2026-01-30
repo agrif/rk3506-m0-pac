@@ -26,3 +26,19 @@ GPIO3:
       GPIO3_3:
         description: GPIO3_3 Interrupt
         value: 7
+
+CORTEX_M0:
+  _add:
+    _interrupts:
+      INTMUX0:
+        description: INTMUX0 Interrupt
+        value: 28
+      INTMUX1:
+        description: INTMUX1 Interrupt
+        value: 29
+      INTMUX2:
+        description: INTMUX2 Interrupt
+        value: 30
+      INTMUX3:
+        description: INTMUX3 Interrupt
+        value: 31

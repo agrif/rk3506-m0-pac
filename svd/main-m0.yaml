@@ -13,4 +13,5 @@ _svd: "rk3506-m0-base.svd"
 _include:
   - interrupts-m0.yaml
 
+  - cortex-m0.yaml
   - gpio.yaml
