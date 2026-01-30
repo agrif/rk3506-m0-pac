@@ -1,0 +1,168 @@
+# section 17.4, page 408
+
+_add:
+  GPIO0:
+    description: General Purpose Programming I/O (Block 0)
+    baseAddress: 0xFF940000
+    addressBlock:
+      offset: 0x0000
+      size: 0x0128
+      usage: registers
+    registers:
+      SWPORT_DR%s:
+        description: Port Data Register
+        addressOffset: 0x0000
+        dim: 2
+        dimIncrement: 4
+        dimIndex: _L,_H
+
+      SWPORT_DDR%s:
+        description: Port Data Direction Register
+        addressOffset: 0x0008
+        dim: 2
+        dimIncrement: 4
+        dimIndex: _L,_H
+
+      INT_EN%s:
+        description: Interrupt Enable Register
+        addressOffset: 0x0010
+        dim: 2
+        dimIncrement: 4
+        dimIndex: _L,_H
+
+      INT_MASK%s:
+        description: Interrupt Mask Register
+        addressOffset: 0x0018
+        dim: 2
+        dimIncrement: 4
+        dimIndex: _L,_H
+
+      INT_TYPE%s:
+        description: Interrupt Level Register
+        addressOffset: 0x0020
+        dim: 2
+        dimIncrement: 4
+        dimIndex: _L,_H
+
+      INT_POLARITY%s:
+        description: Interrupt Polarity Register
+        addressOffset: 0x0028
+        dim: 2
+        dimIncrement: 4
+        dimIndex: _L,_H
+
+      INT_BOTHEDGE%s:
+        description: Interrupt Both Edge Type Register
+        addressOffset: 0x0030
+        dim: 2
+        dimIncrement: 4
+        dimIndex: _L,_H
+
+      DEBOUNCE%s:
+        description: Debounce Enable Register
+        addressOffset: 0x0038
+        dim: 2
+        dimIncrement: 4
+        dimIndex: _L,_H
+
+      DBCLK_DIV_EN%s:
+        description: DBCLK Divide Enable Register
+        addressOffset: 0x0040
+        dim: 2
+        dimIncrement: 4
+        dimIndex: _L,_H
+
+      DBCLK_DIV_CON:
+        description: DBCLK Divide Control Register
+        addressOffset: 0x0048
+        resetValue: 0x00000001
+
+      INT_STATUS:
+        description: Interrupt Status Register
+        addressOffset: 0x0050
+
+      INT_RAWSTATUS:
+        description: Interrupt Raw Status Register
+        addressOffset: 0x0058
+
+      PORT_EOI%s:
+        description: Interrupt Clear Register
+        addressOffset: 0x0060
+        dim: 2
+        dimIncrement: 4
+        dimIndex: _L,_H
+
+      EXT_PORT:
+        description: External Port Data Register
+        addressOffset: 0x0070
+
+      VER_ID:
+        description: Version ID Register
+        addressOffset: 0x0078
+        resetValue: 0x010219C8
+
+      STORE_ST%s:
+        description: Store Status Register
+        addressOffset: 0x0080
+        dim: 2
+        dimIncrement: 4
+        dimIndex: _L,_H
+
+      REG_GROUP%s:
+        description: GPIO Group Control
+        addressOffset: 0x0100
+        dim: 2
+        dimIncrement: 4
+        dimIndex: _L,_H
+        # FIXME
+        #resetValue: [0x00000000, 0x0000FFFF]
+
+      VIRTUAL_EN:
+        description: GPIO Virtual Enable
+        addressOffset: 0x0108
+
+      REG_GROUP_1%s:
+        description: GPIO Group 1 Control
+        addressOffset: 0x0110
+        dim: 2
+        dimIncrement: 4
+        dimIndex: _L,_H
+
+      REG_GROUP_2%s:
+        description: GPIO Group 2 Control
+        addressOffset: 0x0118
+        dim: 2
+        dimIncrement: 4
+        dimIndex: _L,_H
+
+      REG_GROUP_3%s:
+        description: GPIO Group 3 Control
+        addressOffset: 0x0120
+        dim: 2
+        dimIncrement: 4
+        dimIndex: _L,_H
+
+  GPIO1:
+    derivedFrom: GPIO0
+    description: General Purpose Programming I/O (Block 1)
+    baseAddress: 0xFF870000
+
+  #GPIO1_SHADOW:
+  #  derivedFrom: GPIO0
+  #  description: General Purpose Programming I/O (Block 1 Shadow)
+  #  baseAddress: 0xFF948000
+
+  GPIO2:
+    derivedFrom: GPIO0
+    description: General Purpose Programming I/O (Block 2)
+    baseAddress: 0xFF1C0000
+
+  GPIO3:
+    derivedFrom: GPIO0
+    description: General Purpose Programming I/O (Block 3)
+    baseAddress: 0xFF1D0000
+
+  GPIO4:
+    derivedFrom: GPIO0
+    description: General Purpose Programming I/O (Block 4)
+    baseAddress: 0xFF1E0000

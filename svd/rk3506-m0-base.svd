@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<device schemaVersion="1.1" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
+  <!--
+      This file is a base input, combined with YAML files by
+      svdtools. It should not be used on its own.
+  -->
+  <name>RK3506 M0</name>
+  <version>1.0</version>
+  <description>Rockchip RK3506 (Cortex M0)</description>
+
+  <!-- address info -->
+  <addressUnitBits>8</addressUnitBits>
+  <width>32</width>
+
+  <!-- register defaults -->
+  <size>0x20</size>
+  <resetValue>0</resetValue>
+  <resetMask>0xffffffff</resetMask>
+
+  <cpu>
+    <name>CM0</name>
+    <revision>r0p0</revision>
+    <endian>little</endian>
+    <nvicPrioBits>4</nvicPrioBits>
+    <mpuPresent>true</mpuPresent>
+    <fpuPresent>false</fpuPresent>
+    <vendorSystickConfig>false</vendorSystickConfig>
+  </cpu>
+
+  <peripherals/>
+</device>

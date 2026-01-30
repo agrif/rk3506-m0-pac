@@ -1,0 +1,9 @@
+/device.x
+/lib.rs
+/src/
+/svd/rk3506-m0.svd
+/svd/memorymap.txt
+/svd/html/
+
+/Cargo.lock
+/target/

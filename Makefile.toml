@@ -1,0 +1,67 @@
+[env]
+
+SVDTOOLS = "svdtools"
+CARGO = "cargo"
+CHIPTOOL = "chiptool"
+FORM = "form"
+
+[tasks.default]
+alias = "all"
+
+[tasks.all]
+dependencies = ["generate", "doc", "build"]
+
+[tasks.clean]
+dependencies = ["clean-generated"]
+
+[tasks.clean-generated]
+script_runner = "@duckscript"
+script = '''
+rm svd/rk3506-m0.svd svd/memorymap.txt
+rm -r svd/html/
+rm lib.rs device.x
+rm -r src/
+'''
+
+[tasks.svd]
+condition = {files_modified = {input = ["svd/rk3506-m0-base.svd", "svd/*.yaml"], output = ["svd/rk3506-m0.svd"]}}
+command = "${SVDTOOLS}"
+args = ["patch", "svd/main-m0.yaml", "svd/rk3506-m0.svd"]
+
+[tasks.memorymap]
+dependencies = ["svd"]
+condition = {files_modified = {input = ["svd/rk3506-m0.svd"], output = ["svd/memorymap.txt"]}}
+script_runner = "@duckscript"
+script = '''
+output = exec ${SVDTOOLS} mmap svd/rk3506-m0.svd
+writefile "svd/memorymap.txt" ${output.stdout}
+'''
+
+[tasks.html]
+dependencies = ["svd"]
+condition = {files_modified = {input = ["svd/rk3506-m0.svd"], output = ["svd/html/index.html"]}}
+command = "${SVDTOOLS}"
+args = ["html", "svd/html", "svd/rk3506-m0.svd"]
+
+[tasks.generate]
+dependencies = ["svd"]
+condition = {files_modified = {input = ["svd/rk3506-m0.svd"], output = ["src/lib.rs"]}}
+script_runner = "@duckscript"
+script = '''
+exec ${CHIPTOOL} generate --svd svd/rk3506-m0.svd
+rm -r src
+exec ${FORM} -i lib.rs -o src/
+rm lib.rs
+exec ${CARGO} fmt -- --config-path=rustfmt.toml
+'''
+
+[tasks.build]
+clear = true
+dependencies = ["generate"]
+command = "${CARGO}"
+args = ["build", "--all-features"]
+
+[tasks.doc]
+dependencies = ["generate", "memorymap", "html"]
+command = "${CARGO}"
+args = ["doc", "--all-features"]

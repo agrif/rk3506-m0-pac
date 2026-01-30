@@ -1,0 +1,14 @@
+# references and page numbers are from the datasheet available here:
+# https://opensource.rock-chips.com/images/3/36/Rockchip_RK3506_TRM_Part_1_V1.2-20250811.pdf
+# page numbers are PDF page numbers
+
+# at the time of writing, it has an SHA1 hash of:
+# 7ab3c7b847fde09ae2c59350ea400f05dbb165cc
+
+# archived here:
+# https://web.archive.org/web/20251209144613/https://opensource.rock-chips.com/images/3/36/Rockchip_RK3506_TRM_Part_1_V1.2-20250811.pdf
+
+_svd: "rk3506-m0-base.svd"
+
+_include:
+  - gpio.yaml
