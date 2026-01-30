@@ -45,10 +45,10 @@ args = ["html", "svd/html", "svd/rk3506-m0.svd"]
 
 [tasks.generate]
 dependencies = ["svd"]
-condition = {files_modified = {input = ["svd/rk3506-m0.svd"], output = ["src/lib.rs"]}}
+condition = {files_modified = {input = ["svd/rk3506-m0.svd", "transforms.yaml"], output = ["src/lib.rs"]}}
 script_runner = "@duckscript"
 script = '''
-exec ${CHIPTOOL} generate --svd svd/rk3506-m0.svd
+exec ${CHIPTOOL} generate --svd svd/rk3506-m0.svd --transform transforms.yaml
 rm -r src
 exec ${FORM} -i lib.rs -o src/
 rm lib.rs
