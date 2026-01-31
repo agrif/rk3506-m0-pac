@@ -272,7 +272,7 @@ GPIO0:
     VER_ID:
       description: Version ID Register
       addressOffset: 0x0078
-      resetValue: 0x10219C88
+      resetValue: 0x010219C8
       access: read-only
 
     STORE_ST%s:
