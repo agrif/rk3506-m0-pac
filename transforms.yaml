@@ -6,3 +6,7 @@ transforms:
   - !Rename
     from: gpio0::(.*)
     to: gpio::$1
+
+  - !MergeFieldsets
+    from: gpio::regs::RegGroup([0123])
+    to: gpio::regs::RegGroup
