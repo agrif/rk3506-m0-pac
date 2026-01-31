@@ -1,0 +1,76 @@
+name: Generate Documentation
+
+on:
+  workflow_run:
+    workflows: [Build and Test]
+    types: [completed]
+    branches: [main]
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    name: Generate
+    # only run if build and test succeeded
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          name: generated-docs.zip
+          path: generated-docs
+
+      - run: |
+          mkdir docs
+          mv generated-docs/svd/rk3506-m0.svd docs/rk3506-m0.svd
+          mv generated-docs/svd/memorymap.txt docs/memorymap.txt
+          mv generated-docs/svd/html docs/memorymap
+          mv generated-docs/target/thumbv6m-none-eabi/doc/* docs/
+
+      - run: |
+          echo '
+          <!DOCTYPE HTML>
+          <html lang="en-US">
+            <head>
+              <meta charset="UTF-8">
+              <meta http-equiv="refresh" content="0; url=rk3506_m0_pac/">
+              <script type="text/javascript">
+                window.location.href = "rk3506_m0_pac/"
+              </script>
+              <title>Page Redirection</title>
+            </head>
+            <body>
+              If you are not redirected automatically, follow this <a href="rk3506_m0_pac/">this link</a>.
+            </body>
+          </html>' > docs/index.html
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs/
+
+  deploy:
+    name: Deploy
+    # only run if build and test succeeded
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    needs: generate
+
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - uses: actions/configure-pages@v5
+      - uses: actions/deploy-pages@v4
+        id: deployment

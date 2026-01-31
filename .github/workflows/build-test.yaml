@@ -1,0 +1,43 @@
+name: Build and Test
+on: [push]
+jobs:
+  build:
+    name: Generate and Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: thumbv6m-none-eabi
+          components: rustfmt
+      - uses: baptiste0928/cargo-install@v3
+        with:
+          crate: cargo-make
+          version: "^0.37.24"
+      - uses: baptiste0928/cargo-install@v3
+        with:
+          crate: form
+          version: "^0.13.0"
+      - uses: baptiste0928/cargo-install@v3
+        with:
+          crate: svdtools
+          version: "^0.5.0"
+      - uses: baptiste0928/cargo-install@v3
+        with:
+          crate: chiptool
+          git: https://github.com/embassy-rs/chiptool
+          rev: 6a8c2aa
+          locked: true
+
+      - run: cargo make
+        working-directory: .
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: generated-docs.zip
+          path: |
+            svd/rk3506-m0.svd
+            svd/memorymap.txt
+            svd/html/
+            target/thumbv6m-none-eabi/doc/
