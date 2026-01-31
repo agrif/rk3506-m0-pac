@@ -22,7 +22,7 @@
     <revision>r0p0</revision>
     <endian>little</endian>
     <nvicPrioBits>2</nvicPrioBits>
-    <mpuPresent>true</mpuPresent>
+    <mpuPresent>false</mpuPresent>
     <fpuPresent>false</fpuPresent>
     <vendorSystickConfig>false</vendorSystickConfig>
   </cpu>
