@@ -2,3 +2,7 @@ transforms:
   - !Rename
     from: gpio0::Gpio0
     to: gpio::Gpio
+
+  - !Rename
+    from: gpio0::(.*)
+    to: gpio::$1
