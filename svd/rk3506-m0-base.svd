@@ -21,7 +21,7 @@
     <name>CM0</name>
     <revision>r0p0</revision>
     <endian>little</endian>
-    <nvicPrioBits>4</nvicPrioBits>
+    <nvicPrioBits>2</nvicPrioBits>
     <mpuPresent>true</mpuPresent>
     <fpuPresent>false</fpuPresent>
     <vendorSystickConfig>false</vendorSystickConfig>
