@@ -1,0 +1,137 @@
+# section 13.4, page 379
+
+_add:
+  MAILBOX0:
+    description: Mailbox (Channel 0)
+    baseAddress: 0xFF290000
+    addressBlock:
+      offset: 0x0000
+      size: 0x0020
+      usage: registers
+
+  MAILBOX1:
+    derivedFrom: MAILBOX0
+    description: Mailbox (Channel 1)
+    baseAddress: 0xFF291000
+
+  MAILBOX2:
+    derivedFrom: MAILBOX0
+    description: Mailbox (Channel 2)
+    baseAddress: 0xFF292000
+
+  MAILBOX3:
+    derivedFrom: MAILBOX0
+    description: Mailbox (Channel 3)
+    baseAddress: 0xFF293000
+
+MAILBOX0:
+  _add:
+    A2B_INTEN:
+      description: A to B Interrupt Enable Register
+      addressOffset: 0x0000
+      resetValue: 0x00000100
+      fields:
+        tx_done:
+          description: Enable Tx interrupt for this direction.
+          bitRange: "[0:0]"
+        rx_done:
+          description: Enable Rx interrupt for this direction.
+          bitRange: "[1:1]"
+        trig_mode:
+          description: Set Tx interrupt trigger mode for this direction.
+          bitRange: "[8:8]"
+        write_mask_tx_done:
+          description: Write enable for the 'tx_done' field.
+          bitRange: "[16:16]"
+          access: write-only
+        write_mask_rx_done:
+          description: Write enable for the 'rx_done' field.
+          bitRange: "[17:17]"
+          access: write-only
+        write_mask_trig_mode:
+          description: Write enable for the 'trig_mode' field.
+          bitRange: "[24:24]"
+          access: write-only
+
+    A2B_STATUS:
+      description: A to B Interrupt Status Register
+      addressOffset: 0x0004
+      fields:
+        tx_done:
+          description: Tx interrupt status for this direction.
+          bitRange: "[0:0]"
+          modifiedWriteValues: oneToClear
+        rx_done:
+          description: Rx interrupt status for this direction.
+          bitRange: "[1:1]"
+          modifiedWriteValues: oneToClear
+
+    A2B_CMD:
+      description: A to B Command Register
+      addressOffset: 0x0008
+
+    A2B_DATA:
+      description: A to B Data Register
+      addressOffset: 0x000C
+
+    B2A_INTEN:
+      description: B to A Interrupt Enable Register
+      addressOffset: 0x0010
+      resetValue: 0x00000100
+      fields:
+        tx_done:
+          description: Enable Tx interrupt for this direction.
+          bitRange: "[0:0]"
+        rx_done:
+          description: Enable Rx interrupt for this direction.
+          bitRange: "[1:1]"
+        trig_mode:
+          description: Set Tx interrupt trigger mode for this direction.
+          bitRange: "[8:8]"
+        write_mask_tx_done:
+          description: Write enable for the 'tx_done' field.
+          bitRange: "[16:16]"
+          access: write-only
+        write_mask_rx_done:
+          description: Write enable for the 'rx_done' field.
+          bitRange: "[17:17]"
+          access: write-only
+        write_mask_trig_mode:
+          description: Write enable for the 'trig_mode' field.
+          bitRange: "[24:24]"
+          access: write-only
+
+    B2A_STATUS:
+      description: B to A Interrupt Status Register
+      addressOffset: 0x0014
+      fields:
+        tx_done:
+          description: Tx interrupt status for this direction.
+          bitRange: "[0:0]"
+          modifiedWriteValues: oneToClear
+        rx_done:
+          description: Rx interrupt status for this direction.
+          bitRange: "[1:1]"
+          modifiedWriteValues: oneToClear
+
+    B2A_CMD:
+      description: B to A Command Register
+      addressOffset: 0x0018
+
+    B2A_DATA:
+      description: B to A Data Register
+      addressOffset: 0x001C
+
+  "*_INTEN":
+    tx_done: [0, 1]
+    rx_done: [0, 1]
+    trig_mode:
+      CMD: [0, "Generate interrupt after writing CMD."]
+      DATA: [1, "Generate interrupt after writing CMD, then DATA."]
+    write_mask_tx_done: [0, 1]
+    write_mask_rx_done: [0, 1]
+    write_mask_trig_mode: [0, 1]
+
+  "*_STATUS":
+    tx_done: [0, 1]
+    rx_done: [0, 1]

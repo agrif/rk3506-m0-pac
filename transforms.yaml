@@ -1,4 +1,5 @@
 transforms:
+  # GPIO
   - !Rename
     from: gpio0::Gpio0
     to: gpio::Gpio
@@ -10,3 +11,24 @@ transforms:
   - !MergeFieldsets
     from: gpio::regs::RegGroup([0123])
     to: gpio::regs::RegGroup
+
+  # Mailbox
+  - !Rename
+    from: mailbox0::Mailbox0
+    to: mailbox::Mailbox
+
+  - !Rename
+    from: mailbox0::(.*)
+    to: mailbox::$1
+
+  - !MergeEnums
+    from: mailbox::vals::(A2b|B2a)IntenTrigMode
+    to: mailbox::vals::TrigMode
+
+  - !MergeFieldsets
+    from: mailbox::regs::(A2b|B2a)Inten
+    to: mailbox::regs::Inten
+
+  - !MergeFieldsets
+    from: mailbox::regs::(A2b|B2a)Status
+    to: mailbox::regs::Status

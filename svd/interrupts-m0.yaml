@@ -27,6 +27,13 @@ GPIO3:
         description: GPIO3_3 Interrupt
         value: 7
 
+MAILBOX0:
+  _add:
+    _interrupts:
+      MAILBOX_BB:
+        description: MAILBOX_BB Interrupt
+        value: 22
+
 CORTEX_M0:
   _add:
     _interrupts:
