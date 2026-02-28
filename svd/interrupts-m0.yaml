@@ -34,7 +34,7 @@ MAILBOX0:
         description: MAILBOX_BB Interrupt
         value: 22
 
-CORTEX_M0:
+INTMUX:
   _add:
     _interrupts:
       INTMUX0:

@@ -12,6 +12,11 @@ transforms:
     from: gpio::regs::RegGroup([0123])
     to: gpio::regs::RegGroup
 
+  # Intmux
+  - !MergeFieldsets
+    from: intmux::regs::Irq(Flag|Mask)([0-3])
+    to: intmux::regs::Irq$2
+
   # Mailbox
   - !Rename
     from: mailbox0::Mailbox0

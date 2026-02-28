@@ -1,0 +1,816 @@
+# section 4.4, page 133
+
+_add:
+  INTMUX:
+    description: Cortex M0 MCU Interrupt Multiplexer
+    baseAddress: 0xFF2A0000
+    addressBlock:
+      offset: 0x0000
+      size: 0x90
+      usage: registers
+
+INTMUX:
+  _add:
+    IRQ_MASK0:
+      description: Interrupt Multiplexer Mask (0-31)
+      addressOffset: 0x0000
+      fields:
+        pmugpio_0:
+          description: PMUGPIO_0 Interrupt
+          bitRange: "[0:0]"
+        gpio1_0:
+          description: GPIO1_0 Interrupt
+          bitRange: "[1:1]"
+        gpio2_0:
+          description: GPIO2_0 Interrupt
+          bitRange: "[2:2]"
+        gpio2_1:
+          description: GPIO2_1 Interrupt
+          bitRange: "[3:3]"
+        gpio2_2:
+          description: GPIO2_2 Interrupt
+          bitRange: "[4:4]"
+        gpio3_0:
+          description: GPIO3_0 Interrupt
+          bitRange: "[5:5]"
+        gpio3_1:
+          description: GPIO3_1 Interrupt
+          bitRange: "[6:6]"
+        gpio3_2:
+          description: GPIO3_2 Interrupt
+          bitRange: "[7:7]"
+        gpio4_0:
+          description: GPIO4_0 Interrupt
+          bitRange: "[8:8]"
+        gpio4_1:
+          description: GPIO4_1 Interrupt
+          bitRange: "[9:9]"
+        gpio4_2:
+          description: GPIO4_2 Interrupt
+          bitRange: "[10:10]"
+        gpio4_3:
+          description: GPIO4_3 Interrupt
+          bitRange: "[11:11]"
+        pwm0_0:
+          description: PWM0_0 Interrupt
+          bitRange: "[12:12]"
+        pwm0_1:
+          description: PWM0_1 Interrupt
+          bitRange: "[13:13]"
+        pwm0_2:
+          description: PWM0_2 Interrupt
+          bitRange: "[14:14]"
+        pwm0_3:
+          description: PWM0_3 Interrupt
+          bitRange: "[15:15]"
+        pwm1_0:
+          description: PWM1_0 Interrupt
+          bitRange: "[16:16]"
+        pwm1_1:
+          description: PWM1_1 Interrupt
+          bitRange: "[17:17]"
+        pwm1_2:
+          description: PWM1_2 Interrupt
+          bitRange: "[18:18]"
+        pwm1_3:
+          description: PWM1_3 Interrupt
+          bitRange: "[19:19]"
+        pwm1_4:
+          description: PWM1_4 Interrupt
+          bitRange: "[20:20]"
+        pwm1_5:
+          description: PWM1_5 Interrupt
+          bitRange: "[21:21]"
+        uart0:
+          description: UART0 Interrupt
+          bitRange: "[22:22]"
+        uart1:
+          description: UART1 Interrupt
+          bitRange: "[23:23]"
+        uart2:
+          description: UART2 Interrupt
+          bitRange: "[24:24]"
+        uart5:
+          description: UART5 Interrupt
+          bitRange: "[25:25]"
+        i2c0:
+          description: I2C0 Interrupt
+          bitRange: "[26:26]"
+        i2c1:
+          description: I2C1 Interrupt
+          bitRange: "[27:27]"
+        spi0:
+          description: SPI0 Interrupt
+          bitRange: "[28:28]"
+        can0:
+          description: CAN0 Interrupt
+          bitRange: "[29:29]"
+        can1:
+          description: CAN1 Interrupt
+          bitRange: "[30:30]"
+        spdif_tx:
+          description: SPDIF_TX Interrupt
+          bitRange: "[31:31]"
+
+    IRQ_MASK1:
+      description: Interrupt Multiplexer Mask (32-63)
+      addressOffset: 0x0004
+      fields:
+        spdif_rx:
+          description: SPDIF_RX Interrupt
+          bitRange: "[0:0]"
+        pdm:
+          description: PDM Interrupt
+          bitRange: "[1:1]"
+        sai0:
+          description: SAI0 Interrupt
+          bitRange: "[2:2]"
+        sai1:
+          description: SAI1 Interrupt
+          bitRange: "[3:3]"
+        sai2:
+          description: SAI2 Interrupt
+          bitRange: "[4:4]"
+        sai3:
+          description: SAI3 Interrupt
+          bitRange: "[5:5]"
+        sai4:
+          description: SAI4 Interrupt
+          bitRange: "[6:6]"
+        asrc0:
+          description: ASRC0 Interrupt
+          bitRange: "[7:7]"
+        asrc1:
+          description: ASRC1 Interrupt
+          bitRange: "[8:8]"
+        tsadc:
+          description: TSADC Interrupt
+          bitRange: "[9:9]"
+        vop:
+          description: VOP Interrupt
+          bitRange: "[10:10]"
+        mipi_dsihost:
+          description: MIPI_DSIHOST Interrupt
+          bitRange: "[11:11]"
+        rga:
+          description: RGA Interrupt
+          bitRange: "[12:12]"
+        otpc_ns:
+          description: OTPC_NS Interrupt
+          bitRange: "[13:13]"
+        otpc_s:
+          description: OTPC_S Interrupt
+          bitRange: "[14:14]"
+        keyreader:
+          description: KEYREADER Interrupt
+          bitRange: "[15:15]"
+        otpc_mask:
+          description: OTPC_MASK Interrupt
+          bitRange: "[16:16]"
+        gmac0_sbd:
+          description: GMAC0_SBD Interrupt
+          bitRange: "[17:17]"
+        gmac0_sbd_perch_tx:
+          description: GMAC0_SBD_PERCH_TX Interrupt
+          bitRange: "[18:18]"
+        gmac0_sbd_perch_rx:
+          description: GMAC0_SBD_PERCH_RX Interrupt
+          bitRange: "[19:19]"
+        gmac0_pmt:
+          description: GMAC0_PMT Interrupt
+          bitRange: "[20:20]"
+        gmac1_sbd:
+          description: GMAC1_SBD Interrupt
+          bitRange: "[21:21]"
+        gmac1_sbd_perch_tx:
+          description: GMAC1_SBD_PERCH_TX Interrupt
+          bitRange: "[22:22]"
+        gmac1_sbd_perch_rx:
+          description: GMAC1_SBD_PERCH_RX Interrupt
+          bitRange: "[23:23]"
+        gmac1_pmt:
+          description: GMAC1_PMT Interrupt
+          bitRange: "[24:24]"
+        usb2otg0:
+          description: USB2OTG0 Interrupt
+          bitRange: "[25:25]"
+        otg0_bvalid:
+          description: OTG0_BVALID Interrupt
+          bitRange: "[26:26]"
+        otg0_id:
+          description: OTG0_ID Interrupt
+          bitRange: "[27:27]"
+        otg0_linestate:
+          description: OTG0_LINESTATE Interrupt
+          bitRange: "[28:28]"
+        otg0_disconnect:
+          description: OTG0_DISCONNECT Interrupt
+          bitRange: "[29:29]"
+        usb2otg1:
+          description: USB2OTG1 Interrupt
+          bitRange: "[30:30]"
+        otg1_bvalid:
+          description: OTG1_BVALID Interrupt
+          bitRange: "[31:31]"
+
+    IRQ_MASK2:
+      description: Interrupt Multiplexer Mask (64-95)
+      addressOffset: 0x0008
+      fields:
+        otg1_id:
+          description: OTG1_ID Interrupt
+          bitRange: "[0:0]"
+        otg1_linestate:
+          description: OTG1_LINESTATE Interrupt
+          bitRange: "[1:1]"
+        otg1_disconnect:
+          description: OTG1_DISCONNECT Interrupt
+          bitRange: "[2:2]"
+        spi2apb:
+          description: SPI2APB Interrupt
+          bitRange: "[3:3]"
+        sfc:
+          description: SFC Interrupt
+          bitRange: "[4:4]"
+        ddrc_awpoison_0:
+          description: DDRC_AWPOISON_0 Interrupt
+          bitRange: "[5:5]"
+        ddrc_awpoison_1:
+          description: DDRC_AWPOISON_1 Interrupt
+          bitRange: "[6:6]"
+        ddrc_arpoison_0:
+          description: DDRC_ARPOISON_0 Interrupt
+          bitRange: "[7:7]"
+        ddrc_arpoison_1:
+          description: DDRC_ARPOISON_1 Interrupt
+          bitRange: "[8:8]"
+        ddrc_dfi_alert_err:
+          description: DDRC_DFI_ALERT_ERR Interrupt
+          bitRange: "[9:9]"
+        ddr_monitor:
+          description: DDR_MONITOR Interrupt
+          bitRange: "[10:10]"
+        ddrphy:
+          description: DDRPHY Interrupt
+          bitRange: "[11:11]"
+        rktimer0:
+          description: RKTIMER0 Interrupt
+          bitRange: "[12:12]"
+        rktimer1:
+          description: RKTIMER1 Interrupt
+          bitRange: "[13:13]"
+        rktimer2:
+          description: RKTIMER2 Interrupt
+          bitRange: "[14:14]"
+        rktimer3:
+          description: RKTIMER3 Interrupt
+          bitRange: "[15:15]"
+        stimer0:
+          description: STIMER0 Interrupt
+          bitRange: "[16:16]"
+        stimer1:
+          description: STIMER1 Interrupt
+          bitRange: "[17:17]"
+        stimer2:
+          description: STIMER2 Interrupt
+          bitRange: "[18:18]"
+        stimer3:
+          description: STIMER3 Interrupt
+          bitRange: "[19:19]"
+        hptimer:
+          description: HPTIMER Interrupt
+          bitRange: "[20:20]"
+        wdt0:
+          description: WDT0 Interrupt
+          bitRange: "[21:21]"
+        wdt1:
+          description: WDT1 Interrupt
+          bitRange: "[22:22]"
+        mailbox_ap:
+          description: MAILBOX_AP Interrupt
+          bitRange: "[23:23]"
+        crypto:
+          description: CRYPTO Interrupt
+          bitRange: "[24:24]"
+        crypto_klad:
+          description: CRYPTO_KLAD Interrupt
+          bitRange: "[25:25]"
+        crypto_sc:
+          description: CRYPTO_SC Interrupt
+          bitRange: "[26:26]"
+        nstrng:
+          description: NSTRNG Interrupt
+          bitRange: "[27:27]"
+        strng:
+          description: STRNG Interrupt
+          bitRange: "[28:28]"
+        dsmc_slv:
+          description: DSMC_SLV Interrupt
+          bitRange: "[29:29]"
+        syscore_0:
+          description: SYSCORE_0 Interrupt
+          bitRange: "[30:30]"
+        syscore_1:
+          description: SYSCORE_1 Interrupt
+          bitRange: "[31:31]"
+
+    IRQ_MASK3:
+      description: Interrupt Multiplexer Mask (96-125)
+      addressOffset: 0x000C
+      fields:
+        syscore_2:
+          description: SYSCORE_2 Interrupt
+          bitRange: "[0:0]"
+        syscore_3:
+          description: SYSCORE_3 Interrupt
+          bitRange: "[1:1]"
+        syscore_4:
+          description: SYSCORE_4 Interrupt
+          bitRange: "[2:2]"
+        strimer_dsmc_mux:
+          description: STRIMER_DSMC_MUX Interrupt
+          bitRange: "[3:3]"
+        pmu:
+          description: PMU Interrupt
+          bitRange: "[4:4]"
+        rknpor_powerngood:
+          description: RKNPOR_POWERNGOOD Interrupt
+          bitRange: "[5:5]"
+        gpio1_shadow_0:
+          description: GPIO1_SHADOW_0 Interrupt
+          bitRange: "[6:6]"
+        gpio1_1:
+          description: GPIO1_1 Interrupt
+          bitRange: "[7:7]"
+        gpio1_2:
+          description: GPIO1_2 Interrupt
+          bitRange: "[8:8]"
+        gpio1_3:
+          description: GPIO1_3 Interrupt
+          bitRange: "[9:9]"
+        otg0_vbusvalid:
+          description: OTG0_VBUSVALID Interrupt
+          bitRange: "[10:10]"
+        otg1_vbusvalid:
+          description: OTG1_VBUSVALID Interrupt
+          bitRange: "[11:11]"
+        vop_post_lb:
+          description: VOP_POST_LB Interrupt
+          bitRange: "[12:12]"
+        dma2ddr:
+          description: DMA2DDR Interrupt
+          bitRange: "[13:13]"
+        mailbox_ap_0:
+          description: MAILBOX_AP_0 Interrupt
+          bitRange: "[14:14]"
+        mailbox_ap_1:
+          description: MAILBOX_AP_1 Interrupt
+          bitRange: "[15:15]"
+        mailbox_ap_2:
+          description: MAILBOX_AP_2 Interrupt
+          bitRange: "[16:16]"
+        mailbox_ap_3:
+          description: MAILBOX_AP_3 Interrupt
+          bitRange: "[17:17]"
+        mailbox_bb_0:
+          description: MAILBOX_BB_0 Interrupt
+          bitRange: "[18:18]"
+        mailbox_bb_1:
+          description: MAILBOX_BB_1 Interrupt
+          bitRange: "[19:19]"
+        mailbox_bb_2:
+          description: MAILBOX_BB_2 Interrupt
+          bitRange: "[20:20]"
+        mailbox_bb_3:
+          description: MAILBOX_BB_3 Interrupt
+          bitRange: "[21:21]"
+        gmac0_mcgr_dma:
+          description: GMAC0_MCGR_DMA Interrupt
+          bitRange: "[22:22]"
+        gmac1_mcgr_dma:
+          description: GMAC1_MCGR_DMA Interrupt
+          bitRange: "[23:23]"
+        dmac0_mask0:
+          description: DMAC0_MASK0 Interrupt
+          bitRange: "[24:24]"
+        dmac0_mask1:
+          description: DMAC0_MASK1 Interrupt
+          bitRange: "[25:25]"
+        dmac0_mask2:
+          description: DMAC0_MASK2 Interrupt
+          bitRange: "[26:26]"
+        dmac1_mask0:
+          description: DMAC1_MASK0 Interrupt
+          bitRange: "[27:27]"
+        dmac2_mask1:
+          description: DMAC2_MASK1 Interrupt
+          bitRange: "[28:28]"
+        dmac3_mask2:
+          description: DMAC3_MASK2 Interrupt
+          bitRange: "[29:29]"
+
+    IRQ_FLAG0:
+      description: Interrupt Multiplexer Flags (0-31)
+      addressOffset: 0x0080
+      access: read-only
+      fields:
+        pmugpio_0:
+          description: PMUGPIO_0 Interrupt
+          bitRange: "[0:0]"
+        gpio1_0:
+          description: GPIO1_0 Interrupt
+          bitRange: "[1:1]"
+        gpio2_0:
+          description: GPIO2_0 Interrupt
+          bitRange: "[2:2]"
+        gpio2_1:
+          description: GPIO2_1 Interrupt
+          bitRange: "[3:3]"
+        gpio2_2:
+          description: GPIO2_2 Interrupt
+          bitRange: "[4:4]"
+        gpio3_0:
+          description: GPIO3_0 Interrupt
+          bitRange: "[5:5]"
+        gpio3_1:
+          description: GPIO3_1 Interrupt
+          bitRange: "[6:6]"
+        gpio3_2:
+          description: GPIO3_2 Interrupt
+          bitRange: "[7:7]"
+        gpio4_0:
+          description: GPIO4_0 Interrupt
+          bitRange: "[8:8]"
+        gpio4_1:
+          description: GPIO4_1 Interrupt
+          bitRange: "[9:9]"
+        gpio4_2:
+          description: GPIO4_2 Interrupt
+          bitRange: "[10:10]"
+        gpio4_3:
+          description: GPIO4_3 Interrupt
+          bitRange: "[11:11]"
+        pwm0_0:
+          description: PWM0_0 Interrupt
+          bitRange: "[12:12]"
+        pwm0_1:
+          description: PWM0_1 Interrupt
+          bitRange: "[13:13]"
+        pwm0_2:
+          description: PWM0_2 Interrupt
+          bitRange: "[14:14]"
+        pwm0_3:
+          description: PWM0_3 Interrupt
+          bitRange: "[15:15]"
+        pwm1_0:
+          description: PWM1_0 Interrupt
+          bitRange: "[16:16]"
+        pwm1_1:
+          description: PWM1_1 Interrupt
+          bitRange: "[17:17]"
+        pwm1_2:
+          description: PWM1_2 Interrupt
+          bitRange: "[18:18]"
+        pwm1_3:
+          description: PWM1_3 Interrupt
+          bitRange: "[19:19]"
+        pwm1_4:
+          description: PWM1_4 Interrupt
+          bitRange: "[20:20]"
+        pwm1_5:
+          description: PWM1_5 Interrupt
+          bitRange: "[21:21]"
+        uart0:
+          description: UART0 Interrupt
+          bitRange: "[22:22]"
+        uart1:
+          description: UART1 Interrupt
+          bitRange: "[23:23]"
+        uart2:
+          description: UART2 Interrupt
+          bitRange: "[24:24]"
+        uart5:
+          description: UART5 Interrupt
+          bitRange: "[25:25]"
+        i2c0:
+          description: I2C0 Interrupt
+          bitRange: "[26:26]"
+        i2c1:
+          description: I2C1 Interrupt
+          bitRange: "[27:27]"
+        spi0:
+          description: SPI0 Interrupt
+          bitRange: "[28:28]"
+        can0:
+          description: CAN0 Interrupt
+          bitRange: "[29:29]"
+        can1:
+          description: CAN1 Interrupt
+          bitRange: "[30:30]"
+        spdif_tx:
+          description: SPDIF_TX Interrupt
+          bitRange: "[31:31]"
+
+    IRQ_FLAG1:
+      description: Interrupt Multiplexer Flags (32-63)
+      addressOffset: 0x0084
+      access: read-only
+      fields:
+        spdif_rx:
+          description: SPDIF_RX Interrupt
+          bitRange: "[0:0]"
+        pdm:
+          description: PDM Interrupt
+          bitRange: "[1:1]"
+        sai0:
+          description: SAI0 Interrupt
+          bitRange: "[2:2]"
+        sai1:
+          description: SAI1 Interrupt
+          bitRange: "[3:3]"
+        sai2:
+          description: SAI2 Interrupt
+          bitRange: "[4:4]"
+        sai3:
+          description: SAI3 Interrupt
+          bitRange: "[5:5]"
+        sai4:
+          description: SAI4 Interrupt
+          bitRange: "[6:6]"
+        asrc0:
+          description: ASRC0 Interrupt
+          bitRange: "[7:7]"
+        asrc1:
+          description: ASRC1 Interrupt
+          bitRange: "[8:8]"
+        tsadc:
+          description: TSADC Interrupt
+          bitRange: "[9:9]"
+        vop:
+          description: VOP Interrupt
+          bitRange: "[10:10]"
+        mipi_dsihost:
+          description: MIPI_DSIHOST Interrupt
+          bitRange: "[11:11]"
+        rga:
+          description: RGA Interrupt
+          bitRange: "[12:12]"
+        otpc_ns:
+          description: OTPC_NS Interrupt
+          bitRange: "[13:13]"
+        otpc_s:
+          description: OTPC_S Interrupt
+          bitRange: "[14:14]"
+        keyreader:
+          description: KEYREADER Interrupt
+          bitRange: "[15:15]"
+        otpc_mask:
+          description: OTPC_MASK Interrupt
+          bitRange: "[16:16]"
+        gmac0_sbd:
+          description: GMAC0_SBD Interrupt
+          bitRange: "[17:17]"
+        gmac0_sbd_perch_tx:
+          description: GMAC0_SBD_PERCH_TX Interrupt
+          bitRange: "[18:18]"
+        gmac0_sbd_perch_rx:
+          description: GMAC0_SBD_PERCH_RX Interrupt
+          bitRange: "[19:19]"
+        gmac0_pmt:
+          description: GMAC0_PMT Interrupt
+          bitRange: "[20:20]"
+        gmac1_sbd:
+          description: GMAC1_SBD Interrupt
+          bitRange: "[21:21]"
+        gmac1_sbd_perch_tx:
+          description: GMAC1_SBD_PERCH_TX Interrupt
+          bitRange: "[22:22]"
+        gmac1_sbd_perch_rx:
+          description: GMAC1_SBD_PERCH_RX Interrupt
+          bitRange: "[23:23]"
+        gmac1_pmt:
+          description: GMAC1_PMT Interrupt
+          bitRange: "[24:24]"
+        usb2otg0:
+          description: USB2OTG0 Interrupt
+          bitRange: "[25:25]"
+        otg0_bvalid:
+          description: OTG0_BVALID Interrupt
+          bitRange: "[26:26]"
+        otg0_id:
+          description: OTG0_ID Interrupt
+          bitRange: "[27:27]"
+        otg0_linestate:
+          description: OTG0_LINESTATE Interrupt
+          bitRange: "[28:28]"
+        otg0_disconnect:
+          description: OTG0_DISCONNECT Interrupt
+          bitRange: "[29:29]"
+        usb2otg1:
+          description: USB2OTG1 Interrupt
+          bitRange: "[30:30]"
+        otg1_bvalid:
+          description: OTG1_BVALID Interrupt
+          bitRange: "[31:31]"
+
+    IRQ_FLAG2:
+      description: Interrupt Multiplexer Flags (64-95)
+      addressOffset: 0x0088
+      access: read-only
+      fields:
+        otg1_id:
+          description: OTG1_ID Interrupt
+          bitRange: "[0:0]"
+        otg1_linestate:
+          description: OTG1_LINESTATE Interrupt
+          bitRange: "[1:1]"
+        otg1_disconnect:
+          description: OTG1_DISCONNECT Interrupt
+          bitRange: "[2:2]"
+        spi2apb:
+          description: SPI2APB Interrupt
+          bitRange: "[3:3]"
+        sfc:
+          description: SFC Interrupt
+          bitRange: "[4:4]"
+        ddrc_awpoison_0:
+          description: DDRC_AWPOISON_0 Interrupt
+          bitRange: "[5:5]"
+        ddrc_awpoison_1:
+          description: DDRC_AWPOISON_1 Interrupt
+          bitRange: "[6:6]"
+        ddrc_arpoison_0:
+          description: DDRC_ARPOISON_0 Interrupt
+          bitRange: "[7:7]"
+        ddrc_arpoison_1:
+          description: DDRC_ARPOISON_1 Interrupt
+          bitRange: "[8:8]"
+        ddrc_dfi_alert_err:
+          description: DDRC_DFI_ALERT_ERR Interrupt
+          bitRange: "[9:9]"
+        ddr_monitor:
+          description: DDR_MONITOR Interrupt
+          bitRange: "[10:10]"
+        ddrphy:
+          description: DDRPHY Interrupt
+          bitRange: "[11:11]"
+        rktimer0:
+          description: RKTIMER0 Interrupt
+          bitRange: "[12:12]"
+        rktimer1:
+          description: RKTIMER1 Interrupt
+          bitRange: "[13:13]"
+        rktimer2:
+          description: RKTIMER2 Interrupt
+          bitRange: "[14:14]"
+        rktimer3:
+          description: RKTIMER3 Interrupt
+          bitRange: "[15:15]"
+        stimer0:
+          description: STIMER0 Interrupt
+          bitRange: "[16:16]"
+        stimer1:
+          description: STIMER1 Interrupt
+          bitRange: "[17:17]"
+        stimer2:
+          description: STIMER2 Interrupt
+          bitRange: "[18:18]"
+        stimer3:
+          description: STIMER3 Interrupt
+          bitRange: "[19:19]"
+        hptimer:
+          description: HPTIMER Interrupt
+          bitRange: "[20:20]"
+        wdt0:
+          description: WDT0 Interrupt
+          bitRange: "[21:21]"
+        wdt1:
+          description: WDT1 Interrupt
+          bitRange: "[22:22]"
+        mailbox_ap:
+          description: MAILBOX_AP Interrupt
+          bitRange: "[23:23]"
+        crypto:
+          description: CRYPTO Interrupt
+          bitRange: "[24:24]"
+        crypto_klad:
+          description: CRYPTO_KLAD Interrupt
+          bitRange: "[25:25]"
+        crypto_sc:
+          description: CRYPTO_SC Interrupt
+          bitRange: "[26:26]"
+        nstrng:
+          description: NSTRNG Interrupt
+          bitRange: "[27:27]"
+        strng:
+          description: STRNG Interrupt
+          bitRange: "[28:28]"
+        dsmc_slv:
+          description: DSMC_SLV Interrupt
+          bitRange: "[29:29]"
+        syscore_0:
+          description: SYSCORE_0 Interrupt
+          bitRange: "[30:30]"
+        syscore_1:
+          description: SYSCORE_1 Interrupt
+          bitRange: "[31:31]"
+
+    IRQ_FLAG3:
+      description: Interrupt Multiplexer Flags (96-125)
+      addressOffset: 0x008C
+      access: read-only
+      fields:
+        syscore_2:
+          description: SYSCORE_2 Interrupt
+          bitRange: "[0:0]"
+        syscore_3:
+          description: SYSCORE_3 Interrupt
+          bitRange: "[1:1]"
+        syscore_4:
+          description: SYSCORE_4 Interrupt
+          bitRange: "[2:2]"
+        strimer_dsmc_mux:
+          description: STRIMER_DSMC_MUX Interrupt
+          bitRange: "[3:3]"
+        pmu:
+          description: PMU Interrupt
+          bitRange: "[4:4]"
+        rknpor_powerngood:
+          description: RKNPOR_POWERNGOOD Interrupt
+          bitRange: "[5:5]"
+        gpio1_shadow_0:
+          description: GPIO1_SHADOW_0 Interrupt
+          bitRange: "[6:6]"
+        gpio1_1:
+          description: GPIO1_1 Interrupt
+          bitRange: "[7:7]"
+        gpio1_2:
+          description: GPIO1_2 Interrupt
+          bitRange: "[8:8]"
+        gpio1_3:
+          description: GPIO1_3 Interrupt
+          bitRange: "[9:9]"
+        otg0_vbusvalid:
+          description: OTG0_VBUSVALID Interrupt
+          bitRange: "[10:10]"
+        otg1_vbusvalid:
+          description: OTG1_VBUSVALID Interrupt
+          bitRange: "[11:11]"
+        vop_post_lb:
+          description: VOP_POST_LB Interrupt
+          bitRange: "[12:12]"
+        dma2ddr:
+          description: DMA2DDR Interrupt
+          bitRange: "[13:13]"
+        mailbox_ap_0:
+          description: MAILBOX_AP_0 Interrupt
+          bitRange: "[14:14]"
+        mailbox_ap_1:
+          description: MAILBOX_AP_1 Interrupt
+          bitRange: "[15:15]"
+        mailbox_ap_2:
+          description: MAILBOX_AP_2 Interrupt
+          bitRange: "[16:16]"
+        mailbox_ap_3:
+          description: MAILBOX_AP_3 Interrupt
+          bitRange: "[17:17]"
+        mailbox_bb_0:
+          description: MAILBOX_BB_0 Interrupt
+          bitRange: "[18:18]"
+        mailbox_bb_1:
+          description: MAILBOX_BB_1 Interrupt
+          bitRange: "[19:19]"
+        mailbox_bb_2:
+          description: MAILBOX_BB_2 Interrupt
+          bitRange: "[20:20]"
+        mailbox_bb_3:
+          description: MAILBOX_BB_3 Interrupt
+          bitRange: "[21:21]"
+        gmac0_mcgr_dma:
+          description: GMAC0_MCGR_DMA Interrupt
+          bitRange: "[22:22]"
+        gmac1_mcgr_dma:
+          description: GMAC1_MCGR_DMA Interrupt
+          bitRange: "[23:23]"
+        dmac0_mask0:
+          description: DMAC0_MASK0 Interrupt
+          bitRange: "[24:24]"
+        dmac0_mask1:
+          description: DMAC0_MASK1 Interrupt
+          bitRange: "[25:25]"
+        dmac0_mask2:
+          description: DMAC0_MASK2 Interrupt
+          bitRange: "[26:26]"
+        dmac1_mask0:
+          description: DMAC1_MASK0 Interrupt
+          bitRange: "[27:27]"
+        dmac2_mask1:
+          description: DMAC2_MASK1 Interrupt
+          bitRange: "[28:28]"
+        dmac3_mask2:
+          description: DMAC3_MASK2 Interrupt
+          bitRange: "[29:29]"
+
+  IRQ_*:
+    # flags and mask are all just plain bits
+    "*": [0, 1]
