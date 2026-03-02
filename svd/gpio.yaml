@@ -302,9 +302,9 @@ GPIO0:
       dimIndex: _L,_H
       # FIXME
       #resetValue: [0x00000000, 0x0000FFFF]
-      fields:
+      fields: &group_fields
         enable[%s]:
-          description: Assign Group 0 of the I/O port.
+          description: Assign this group of the I/O port.
           bitRange: "[0:0]"
           dim: 16
           dimIncrement: 1
@@ -333,18 +333,7 @@ GPIO0:
       dim: 2
       dimIncrement: 4
       dimIndex: _L,_H
-      fields:
-        enable[%s]:
-          description: Assign Group 1 of the I/O port.
-          bitRange: "[0:0]"
-          dim: 16
-          dimIncrement: 1
-        write_mask[%s]:
-          description: Write enable for lower bits of this register.
-          bitRange: "[16:16]"
-          dim: 16
-          dimIncrement: 1
-          access: write-only
+      fields: *group_fields
 
     REG_GROUP_2%s:
       description: GPIO Group 2 Control
@@ -352,18 +341,7 @@ GPIO0:
       dim: 2
       dimIncrement: 4
       dimIndex: _L,_H
-      fields:
-        enable[%s]:
-          description: Assign Group 2 of the I/O port.
-          bitRange: "[0:0]"
-          dim: 16
-          dimIncrement: 1
-        write_mask[%s]:
-          description: Write enable for lower bits of this register.
-          bitRange: "[16:16]"
-          dim: 16
-          dimIncrement: 1
-          access: write-only
+      fields: *group_fields
 
     REG_GROUP_3%s:
       description: GPIO Group 3 Control
@@ -371,18 +349,7 @@ GPIO0:
       dim: 2
       dimIncrement: 4
       dimIndex: _L,_H
-      fields:
-        enable[%s]:
-          description: Assign Group 3 of the I/O port.
-          bitRange: "[0:0]"
-          dim: 16
-          dimIncrement: 1
-        write_mask[%s]:
-          description: Write enable for lower bits of this register.
-          bitRange: "[16:16]"
-          dim: 16
-          dimIncrement: 1
-          access: write-only
+      fields: *group_fields
 
   SWPORT_DR%s:
     data*: [0, 1]
