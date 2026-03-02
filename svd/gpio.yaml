@@ -351,6 +351,16 @@ GPIO0:
       dimIndex: _L,_H
       fields: *group_fields
 
+  # not a lot of tools support array index names well, so expand these arrays
+  _expand_array:
+    SWPORT_*%s: {}
+    INT_*%s: {}
+    DEBOUNCE%s: {}
+    DBCLK_DIV_EN%s: {}
+    PORT_EOI%s: {}
+    STORE_ST%s: {}
+    REG_GROUP_*%s: {}
+
   SWPORT_DR%s:
     data*: [0, 1]
     write_mask*: [0, 1]

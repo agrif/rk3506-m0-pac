@@ -8,6 +8,14 @@ transforms:
     from: gpio0::(.*)
     to: gpio::$1
 
+  - !MergeEnums
+    from: gpio::vals::(.*)(L|H)(.*)
+    to: gpio::vals::$3
+
+  - !MergeFieldsets
+    from: gpio::regs::(.*)(L|H)
+    to: gpio::regs::$1
+
   - !MergeFieldsets
     from: gpio::regs::RegGroup([0123])
     to: gpio::regs::RegGroup
