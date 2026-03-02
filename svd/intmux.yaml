@@ -1,4 +1,7 @@
+# section 1.3, page 25
 # section 4.4, page 133
+#
+# These two interrupt tables do not agree. The differences are noted below.
 
 _add:
   INTMUX:
@@ -15,8 +18,9 @@ INTMUX:
       description: Interrupt Multiplexer Mask (0-31)
       addressOffset: 0x0000
       fields: &intmux0_fields
-        pmugpio_0:
-          description: PMUGPIO_0 Interrupt
+        # Using 1.3 name. 4.4 calls this PMUGPIO_0.
+        gpio0_0:
+          description: GPIO0_0 Interrupt
           bitRange: "[0:0]"
         gpio1_0:
           description: GPIO1_0 Interrupt
@@ -51,6 +55,7 @@ INTMUX:
         gpio4_3:
           description: GPIO4_3 Interrupt
           bitRange: "[11:11]"
+        # Using 4.4 names for PWM. 1.3 calls these PWM0_CH0 etc.
         pwm0_0:
           description: PWM0_0 Interrupt
           bitRange: "[12:12]"
@@ -161,38 +166,42 @@ INTMUX:
         otpc_s:
           description: OTPC_S Interrupt
           bitRange: "[14:14]"
-        keyreader:
-          description: KEYREADER Interrupt
+        # Using 1.3 name. 4.4 calls this KEYREADER.
+        key_reader:
+          description: KEY_READER Interrupt
           bitRange: "[15:15]"
         otpc_mask:
           description: OTPC_MASK Interrupt
           bitRange: "[16:16]"
-        gmac0_sbd:
-          description: GMAC0_SBD Interrupt
+        # Using 1.3 name. 4.4 calls these GMAC0_SBD etc.
+        # and also uses GMAC0_SBD_PERCH_TX instead of GMAC0_SBD_TX.
+        mac0_sbd:
+          description: MAC0_SBD Interrupt
           bitRange: "[17:17]"
-        gmac0_sbd_perch_tx:
-          description: GMAC0_SBD_PERCH_TX Interrupt
+        mac0_sbd_tx:
+          description: MAC0_SBD_TX Interrupt
           bitRange: "[18:18]"
-        gmac0_sbd_perch_rx:
-          description: GMAC0_SBD_PERCH_RX Interrupt
+        mac0_sbd_rx:
+          description: MAC0_SBD_RX Interrupt
           bitRange: "[19:19]"
-        gmac0_pmt:
-          description: GMAC0_PMT Interrupt
+        mac0_pmt:
+          description: MAC0_PMT Interrupt
           bitRange: "[20:20]"
-        gmac1_sbd:
-          description: GMAC1_SBD Interrupt
+        mac1_sbd:
+          description: MAC1_SBD Interrupt
           bitRange: "[21:21]"
-        gmac1_sbd_perch_tx:
-          description: GMAC1_SBD_PERCH_TX Interrupt
+        mac1_sbd_tx:
+          description: MAC1_SBD_TX Interrupt
           bitRange: "[22:22]"
-        gmac1_sbd_perch_rx:
-          description: GMAC1_SBD_PERCH_RX Interrupt
+        mac1_sbd_rx:
+          description: MAC1_SBD_RX Interrupt
           bitRange: "[23:23]"
-        gmac1_pmt:
-          description: GMAC1_PMT Interrupt
+        mac1_pmt:
+          description: MAC1_PMT Interrupt
           bitRange: "[24:24]"
-        usb2otg0:
-          description: USB2OTG0 Interrupt
+        # Using 1.3 name. 4.4 calls this USB2OTG0
+        otg0:
+          description: OTG0 Interrupt
           bitRange: "[25:25]"
         otg0_bvalid:
           description: OTG0_BVALID Interrupt
@@ -206,8 +215,9 @@ INTMUX:
         otg0_disconnect:
           description: OTG0_DISCONNECT Interrupt
           bitRange: "[29:29]"
-        usb2otg1:
-          description: USB2OTG1 Interrupt
+        # Using 1.3 name. 4.4 calls this USB2OTG1
+        otg1:
+          description: OTG1 Interrupt
           bitRange: "[30:30]"
         otg1_bvalid:
           description: OTG1_BVALID Interrupt
@@ -229,20 +239,22 @@ INTMUX:
         spi2apb:
           description: SPI2APB Interrupt
           bitRange: "[3:3]"
-        sfc:
-          description: SFC Interrupt
+        # Using 1.3 name, 4.4 calls this SFC.
+        fspi:
+          description: FSPI Interrupt
           bitRange: "[4:4]"
-        ddrc_awpoison_0:
-          description: DDRC_AWPOISON_0 Interrupt
+        # Using 1.3 name, 4.4 calls these DDRC_AWPOISON0 etc.
+        ddrc_awpoison0:
+          description: DDRC_AWPOISON0 Interrupt
           bitRange: "[5:5]"
-        ddrc_awpoison_1:
-          description: DDRC_AWPOISON_1 Interrupt
+        ddrc_awpoison1:
+          description: DDRC_AWPOISON1 Interrupt
           bitRange: "[6:6]"
-        ddrc_arpoison_0:
-          description: DDRC_ARPOISON_0 Interrupt
+        ddrc_arpoison0:
+          description: DDRC_ARPOISON0 Interrupt
           bitRange: "[7:7]"
-        ddrc_arpoison_1:
-          description: DDRC_ARPOISON_1 Interrupt
+        ddrc_arpoison1:
+          description: DDRC_ARPOISON1 Interrupt
           bitRange: "[8:8]"
         ddrc_dfi_alert_err:
           description: DDRC_DFI_ALERT_ERR Interrupt
@@ -253,29 +265,31 @@ INTMUX:
         ddrphy:
           description: DDRPHY Interrupt
           bitRange: "[11:11]"
-        rktimer0:
-          description: RKTIMER0 Interrupt
+        # Using 1.3 name, 4.4 calls these RKTIMER0 etc.
+        timer0_0:
+          description: TIMER0_0 Interrupt
           bitRange: "[12:12]"
-        rktimer1:
-          description: RKTIMER1 Interrupt
+        timer0_1:
+          description: TIMER0_1 Interrupt
           bitRange: "[13:13]"
-        rktimer2:
-          description: RKTIMER2 Interrupt
+        timer0_2:
+          description: TIMER0_2 Interrupt
           bitRange: "[14:14]"
-        rktimer3:
-          description: RKTIMER3 Interrupt
+        timer0_3:
+          description: TIMER0_3 Interrupt
           bitRange: "[15:15]"
-        stimer0:
-          description: STIMER0 Interrupt
+        # Using 1.3 name, 4.4 calls these STIMER0 etc.
+        timer1_0:
+          description: TIMER1_0 Interrupt
           bitRange: "[16:16]"
-        stimer1:
-          description: STIMER1 Interrupt
+        timer1_1:
+          description: TIMER1_1 Interrupt
           bitRange: "[17:17]"
-        stimer2:
-          description: STIMER2 Interrupt
+        timer1_2:
+          description: TIMER1_2 Interrupt
           bitRange: "[18:18]"
-        stimer3:
-          description: STIMER3 Interrupt
+        timer1_3:
+          description: TIMER1_3 Interrupt
           bitRange: "[19:19]"
         hptimer:
           description: HPTIMER Interrupt
@@ -286,9 +300,11 @@ INTMUX:
         wdt1:
           description: WDT1 Interrupt
           bitRange: "[22:22]"
-        mailbox_ap:
-          description: MAILBOX_AP Interrupt
-          bitRange: "[23:23]"
+        # 1.3 marks this as reserved, 4.4 calls it MAILBOX_AP
+        # In testing, it never fired for me.
+        #mailbox_ap:
+        #  description: MAILBOX_AP Interrupt
+        #  bitRange: "[23:23]"
         crypto:
           description: CRYPTO Interrupt
           bitRange: "[24:24]"
@@ -298,55 +314,63 @@ INTMUX:
         crypto_sc:
           description: CRYPTO_SC Interrupt
           bitRange: "[26:26]"
-        nstrng:
-          description: NSTRNG Interrupt
+        # Using 1.3 name, 4.4 calls these NSTRNG and STRNG.
+        ns_trng:
+          description: NS_TRNG Interrupt
           bitRange: "[27:27]"
-        strng:
-          description: STRNG Interrupt
+        s_trng:
+          description: S_TRNG Interrupt
           bitRange: "[28:28]"
-        dsmc_slv:
-          description: DSMC_SLV Interrupt
+        # Using 1.3 name, 4.4 calls this DSMC_SLV.
+        dsmc_slave:
+          description: DSMC_SLAVE Interrupt
           bitRange: "[29:29]"
-        syscore_0:
-          description: SYSCORE_0 Interrupt
+        # Using 1.3 names, 4.4 calls these SYSCORE_0 etc.
+        a7_pmuirq_0:
+          description: A7_PMUIRQ_0 Interrupt
           bitRange: "[30:30]"
-        syscore_1:
-          description: SYSCORE_1 Interrupt
+        a7_pmuirq_1:
+          description: A7_PMUIRQ_1 Interrupt
           bitRange: "[31:31]"
 
     IRQ_MASK3:
       description: Interrupt Multiplexer Mask (96-125)
       addressOffset: 0x000C
       fields: &intmux3_fields
-        syscore_2:
-          description: SYSCORE_2 Interrupt
+        # Using 1.3 names, 4.4 calls these SYSCORE_2 etc.
+        a7_pmuirq_2:
+          description: A7_PMUIRQ_2 Interrupt
           bitRange: "[0:0]"
-        syscore_3:
-          description: SYSCORE_3 Interrupt
+        a7_pmuirq_3:
+          description: A7_PMUIRQ_3 Interrupt
           bitRange: "[1:1]"
-        syscore_4:
-          description: SYSCORE_4 Interrupt
+        # Using 1.3 name, 4.4 calls this SYSCORE_4.
+        a7_axierrirq:
+          description: A7_AXIERRIRQ Interrupt
           bitRange: "[2:2]"
-        strimer_dsmc_mux:
-          description: STRIMER_DSMC_MUX Interrupt
+        # Using 1.3 name, 4.4 calls this STRIMER_DSMC_MUX.
+        dsmc_timer1_5:
+          description: DSMC/TIMER1_5 Interrupt
           bitRange: "[3:3]"
         pmu:
           description: PMU Interrupt
           bitRange: "[4:4]"
-        rknpor_powerngood:
-          description: RKNPOR_POWERNGOOD Interrupt
+        # Using 1.3 name, 4.4 calls this RKNPOR_POWERNGOOD.
+        npor_powergood:
+          description: NPOR_POWERGOOD Interrupt
           bitRange: "[5:5]"
         gpio1_shadow_0:
           description: GPIO1_SHADOW_0 Interrupt
           bitRange: "[6:6]"
+        # Using 4.4 names, 1.3 calls these GPIO1_SHADOW_1/GPIO1_1 etc.
         gpio1_1:
-          description: GPIO1_1 Interrupt
+          description: GPIO1_SHADOW_1/GPIO1_1 Interrupt
           bitRange: "[7:7]"
         gpio1_2:
-          description: GPIO1_2 Interrupt
+          description: GPIO1_SHADOW_2/GPIO1_2 Interrupt
           bitRange: "[8:8]"
         gpio1_3:
-          description: GPIO1_3 Interrupt
+          description: GPIO1_SHADOW_3/GPIO1_3 Interrupt
           bitRange: "[9:9]"
         otg0_vbusvalid:
           description: OTG0_VBUSVALID Interrupt
@@ -354,42 +378,46 @@ INTMUX:
         otg1_vbusvalid:
           description: OTG1_VBUSVALID Interrupt
           bitRange: "[11:11]"
-        vop_post_lb:
-          description: VOP_POST_LB Interrupt
+        # Using 1.3 names, 4.4 calls this VOP_POST_LB.
+        vop_lb_intr:
+          description: VOP_LB_INTR Interrupt
           bitRange: "[12:12]"
         dma2ddr:
           description: DMA2DDR Interrupt
           bitRange: "[13:13]"
-        mailbox_ap_0:
-          description: MAILBOX_AP_0 Interrupt
+        # Using 1.3 names, 4.4 calls these MAILBOX_AP_0 etc.
+        mailbox_ap0:
+          description: MAILBOX_AP0 Interrupt
           bitRange: "[14:14]"
-        mailbox_ap_1:
-          description: MAILBOX_AP_1 Interrupt
+        mailbox_ap1:
+          description: MAILBOX_AP1 Interrupt
           bitRange: "[15:15]"
-        mailbox_ap_2:
-          description: MAILBOX_AP_2 Interrupt
+        mailbox_ap2:
+          description: MAILBOX_AP2 Interrupt
           bitRange: "[16:16]"
-        mailbox_ap_3:
-          description: MAILBOX_AP_3 Interrupt
+        mailbox_ap3:
+          description: MAILBOX_AP3 Interrupt
           bitRange: "[17:17]"
-        mailbox_bb_0:
-          description: MAILBOX_BB_0 Interrupt
+        mailbox_bb0:
+          description: MAILBOX_BB0 Interrupt
           bitRange: "[18:18]"
-        mailbox_bb_1:
-          description: MAILBOX_BB_1 Interrupt
+        mailbox_bb1:
+          description: MAILBOX_BB1 Interrupt
           bitRange: "[19:19]"
-        mailbox_bb_2:
-          description: MAILBOX_BB_2 Interrupt
+        mailbox_bb2:
+          description: MAILBOX_BB2 Interrupt
           bitRange: "[20:20]"
-        mailbox_bb_3:
-          description: MAILBOX_BB_3 Interrupt
+        mailbox_bb3:
+          description: MAILBOX_BB3 Interrupt
           bitRange: "[21:21]"
-        gmac0_mcgr_dma:
-          description: GMAC0_MCGR_DMA Interrupt
+        # Using 1.3 names, 4.4 calls these GMAC0_MCGR_DMA etc.
+        mac0_mcgr_req:
+          description: MAC0_MCGR_REQ Interrupt
           bitRange: "[22:22]"
-        gmac1_mcgr_dma:
-          description: GMAC1_MCGR_DMA Interrupt
+        mac1_mcgr_req:
+          description: MAC1_MCGR_REQ Interrupt
           bitRange: "[23:23]"
+        # Using 4.4 names, 1.3 calls these DMAC0_MASK_IRQ0 etc.
         dmac0_mask0:
           description: DMAC0_MASK0 Interrupt
           bitRange: "[24:24]"
@@ -399,15 +427,19 @@ INTMUX:
         dmac0_mask2:
           description: DMAC0_MASK2 Interrupt
           bitRange: "[26:26]"
+        # Using neither names. 1.3 calls these DMAC1_MASK_IRQ0 etc,
+        # 4.4 calls these DMAC1_MASK0, DMAC2_MASK1, DMAC3_MASK2 (???).
         dmac1_mask0:
           description: DMAC1_MASK0 Interrupt
           bitRange: "[27:27]"
-        dmac2_mask1:
+        dmac1_mask1:
           description: DMAC2_MASK1 Interrupt
           bitRange: "[28:28]"
-        dmac3_mask2:
+        dmac1_mask2:
           description: DMAC3_MASK2 Interrupt
           bitRange: "[29:29]"
+
+        # Bits 30, 31 are reserved.
 
     IRQ_FLAG0:
       description: Interrupt Multiplexer Flags (0-31)

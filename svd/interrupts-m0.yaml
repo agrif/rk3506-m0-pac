@@ -1,4 +1,22 @@
+# section 1.3,   page 24
 # section 4.6.3, page 135
+#
+# These two interrupt tables do not agree. The differences are noted below.
+
+GPIO0:
+  _add:
+    _interrupts:
+      # Using 1.3 names.
+      # 4.6.3 calls these PMUGPIO_1, etc. I'm not sure what the PMU means.
+      GPIO0_1:
+        description: GPIO0_1 Interrupt
+        value: 0
+      GPIO0_2:
+        description: GPIO0_2 Interrupt
+        value: 1
+      GPIO0_3:
+        description: GPIO0_3 Interrupt
+        value: 2
 
 GPIO1:
   _add:
@@ -29,9 +47,14 @@ GPIO3:
 
 MAILBOX0:
   _add:
+    # Using 1.3 names.
+    # 4.6.3 calls this MAILBOX_BB, but in testing I can only get it to
+    # fire when BB writes to B2A registers, which seems backwards.
+    # This also seems incorrect for MAILBOX_8MUX1, but we gotta call
+    # it something.
     _interrupts:
-      MAILBOX_BB:
-        description: MAILBOX_BB Interrupt
+      MAILBOX_8MUX1:
+        description: MAILBOX_8MUX1 Interrupt
         value: 22
 
 INTMUX:
