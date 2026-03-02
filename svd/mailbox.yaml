@@ -30,7 +30,7 @@ MAILBOX0:
       description: A to B Interrupt Enable Register
       addressOffset: 0x0000
       resetValue: 0x00000100
-      fields:
+      fields: &inten_fields
         tx_done:
           description: Enable Tx interrupt for this direction.
           bitRange: "[0:0]"
@@ -56,7 +56,7 @@ MAILBOX0:
     A2B_STATUS:
       description: A to B Interrupt Status Register
       addressOffset: 0x0004
-      fields:
+      fields: &status_fields
         tx_done:
           description: Tx interrupt status for this direction.
           bitRange: "[0:0]"
@@ -78,41 +78,12 @@ MAILBOX0:
       description: B to A Interrupt Enable Register
       addressOffset: 0x0010
       resetValue: 0x00000100
-      fields:
-        tx_done:
-          description: Enable Tx interrupt for this direction.
-          bitRange: "[0:0]"
-        rx_done:
-          description: Enable Rx interrupt for this direction.
-          bitRange: "[1:1]"
-        trig_mode:
-          description: Set Tx interrupt trigger mode for this direction.
-          bitRange: "[8:8]"
-        write_mask_tx_done:
-          description: Write enable for the 'tx_done' field.
-          bitRange: "[16:16]"
-          access: write-only
-        write_mask_rx_done:
-          description: Write enable for the 'rx_done' field.
-          bitRange: "[17:17]"
-          access: write-only
-        write_mask_trig_mode:
-          description: Write enable for the 'trig_mode' field.
-          bitRange: "[24:24]"
-          access: write-only
+      fields: *inten_fields
 
     B2A_STATUS:
       description: B to A Interrupt Status Register
       addressOffset: 0x0014
-      fields:
-        tx_done:
-          description: Tx interrupt status for this direction.
-          bitRange: "[0:0]"
-          modifiedWriteValues: oneToClear
-        rx_done:
-          description: Rx interrupt status for this direction.
-          bitRange: "[1:1]"
-          modifiedWriteValues: oneToClear
+      fields: *status_fields
 
     B2A_CMD:
       description: B to A Command Register
